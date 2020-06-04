@@ -7,11 +7,6 @@ use std::rc::Rc;
 
 use cgmath::{Matrix3, Matrix4};
 
-const DEFAULT_FONT_BYTES: &'static [u8] = include_bytes!(concat!(
-    env!("CARGO_MANIFEST_DIR"),
-    "/resources/DejaVuSerif.ttf"
-));
-
 pub struct GraphicsContext {
     pub(crate) screen_rect: Rect,
     pub(crate) projection: Matrix4<f32>,
@@ -122,7 +117,7 @@ impl GraphicsContext {
         let text_system = miniquad_text_rusttype::TextSystem::new(ctx);
 
         // load default font, will be available by FontId::default()
-        let fonts_cache = vec![Rc::new(load_font(ctx, DEFAULT_FONT_BYTES, 70).unwrap())];
+        let fonts_cache = vec![];
 
         GraphicsContext {
             projection,
